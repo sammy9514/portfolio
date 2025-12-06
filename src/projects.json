@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Paymonitor",
+    "img": "/payMonitor.png",
+    "desc": "Paymonitor is a payroll application for tracking when and how much you'll get paid weekly without the hasle of remembering it offheart",
+    "details": ""
+  },
+  {
+    "name": "Doodle",
+    "img": "/doodle.png",
+    "desc": "Doodle is a multiplayer draw n guess application for friends and family to play and have fun",
+    "details": ""
+  },
+  {
+    "name": "Amebo",
+    "img": "/amebo.png",
+    "desc": "Amebo is a realtime chat app where friends and family canchat and keep in touch with each other.",
+    "details": ""
+  }
+]

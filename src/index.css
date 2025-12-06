@@ -1,0 +1,150 @@
+@import "tailwindcss";
+
+:root {
+  --paper-color: #fdfbf7;
+  --line-color: #a2a2a2;
+  --margin-color: #ff9ea5;
+  --ink-color: #2c3e50;
+  --pencil-color: #555;
+}
+
+body {
+  margin: 0;
+  font-family: "Patrick Hand", cursive;
+  background-color: #e0e0e0;
+  /* Desk background */
+  color: var(--ink-color);
+  min-height: 100vh;
+}
+
+#root {
+  max-width: 1000px;
+  margin: 2rem auto;
+  min-height: calc(100vh - 4rem);
+  background-color: var(--paper-color);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1), 10px 10px 30px rgba(0, 0, 0, 0.15);
+  /* deeper shadow for depth */
+  position: relative;
+  border-radius: 2px 5px 5px 2px;
+
+  /* Lined Paper Effect with Margin */
+  background-image:
+    /* Margin Line */ linear-gradient(
+      90deg,
+      transparent 79px,
+      var(--margin-color) 79px,
+      var(--margin-color) 81px,
+      transparent 81px
+    ),
+    /* Horizontal Lines */
+      linear-gradient(var(--line-color) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 2rem;
+  background-attachment: local;
+
+  padding-left: 100px;
+  padding-right: 3rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+/* Noise Texture Overlay */
+#root::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.03;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  z-index: 0;
+}
+
+/* Spiral Binding Effect */
+#root::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 20px;
+  width: 50px;
+  /* Slightly wider for more detail */
+  background:
+    /* The holes */ radial-gradient(
+        circle at 15px center,
+        #fdfbf7 6px,
+        #ccc 7px,
+        #999 8px,
+        transparent 8px
+      )
+      0 0 / 100% 2rem,
+    /* The wire spiral - front part */
+      linear-gradient(
+        to bottom right,
+        transparent 42%,
+        #444 42%,
+        #666 45%,
+        #888 48%,
+        #444 50%,
+        transparent 50%
+      )
+      0 0 / 100% 2rem,
+    /* The wire spiral - back part (shadowy) */
+      linear-gradient(
+        to bottom right,
+        transparent 50%,
+        #222 50%,
+        #333 55%,
+        transparent 55%
+      )
+      0 0 / 100% 2rem;
+  background-repeat: repeat-y;
+  z-index: 10;
+  filter: drop-shadow(3px 2px 2px rgba(0, 0, 0, 0.3));
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Utility Classes for Notebook Look */
+.tape {
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-2deg);
+  width: 120px;
+  height: 35px;
+  background-color: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  z-index: 20;
+  backdrop-filter: blur(2px);
+  /* Jagged edges for tape */
+  mask-image: url("data:image/svg+xml,%3Csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='0' y='0' width='100%25' height='100%25' fill='black'/%3E%3C/svg%3E");
+}
+
+.highlighter {
+  background: linear-gradient(
+    120deg,
+    rgba(255, 235, 59, 0.4) 0%,
+    rgba(255, 235, 59, 0.4) 100%
+  );
+  border-radius: 4px 15px 4px 15px;
+  padding: 0 5px;
+}
