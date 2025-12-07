@@ -14,15 +14,16 @@ const Navbar = () => {
       >
         My Portfolio
       </motion.h1>
-      <div className="hidden md-flex gap-2 ml-5">
+      <div className="hidden md:flex gap-2 ml-5">
         {nav.map((item, index) => (
-          <div
+          <a
             key={index}
-            className={`px-[25px] pb-[5px] pt-3 rounded-t-[10px] text-[#2c3e50] border-[rgba(0,0,0,0.1)] border border-b-0 relative font-semibold text-[18px] bottom-0 hover:bottom-1 hover:brightness-95 transition-all duration-300 ease-in-out cursor-pointer `}
+            className={`px-[25px] pb-[5px] pt-3 rounded-t-[10px] text-[#2c3e50] border-[rgba(0,0,0,0.1)] border border-b-0 relative font-semibold text-[18px] bottom-0 hover:bottom-1 hover:brightness-95 transition-all duration-300 ease-in-out cursor-pointer decoration-0 `}
             style={{ backgroundColor: colors[index] }}
+            href={`#${item.toLocaleLowerCase()}`}
           >
             {item}
-          </div>
+          </a>
         ))}
       </div>
     </div>

@@ -7,12 +7,12 @@ const Hero = () => {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3, delay: 0.1 }}
       viewport={{ once: true }}
-      className="mt-[10vh] md-mt-[25vh] ml-4 min-h-[15vh] md-min-h-[65vh] "
+      className="mt-[10vh] md:mt-[25vh] ml-4 min-h-[15vh] md:min-h-[65vh] "
     >
-      <div className="text-[22px] md:text-[63px] font-semibold font-[Kalam] flex gap-3 md-gap-5  ">
+      <div className="text-[30px] md:text-[63px] font-semibold font-[Kalam] md:flex gap-3 md:gap-5  ">
         Hello, I'm
         <span
-          className="-rotate-2 md-bottom-2 relative  "
+          className="-rotate-2 md:bottom-2 relative  "
           style={{
             background:
               "linear-gradient(120deg, rgba(255, 255, 0, 0.4) 0%, rgba(255, 255, 0, 0.4) 100%)",

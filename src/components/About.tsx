@@ -20,9 +20,10 @@ const About = () => {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3, delay: 0.1 }}
       viewport={{ once: true }}
-      className="ml-4 min-h-[10vh] md-min-h-[50vh]"
+      className="ml-4 min-h-[10vh] md:min-h-[50vh]"
+      id="about"
     >
-      <h2 className="text-center font-[Kalam] font-semibold mt-10 text-[30px] md-text-[50px]  ">
+      <h2 className="text-center font-[Kalam] font-semibold mt-10 text-[30px] md:text-[50px]  ">
         About me{" "}
       </h2>
       {/* <p>

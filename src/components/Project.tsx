@@ -8,9 +8,10 @@ const Project = () => {
       // whileInView={{ opacity: 1, y: 0 }}
       // transition={{ duration: 0.3, delay: 0.1 }}
       // viewport={{ once: true }}
-      className="ml-4 min-h-[10vh] md-min-h-[120vh] "
+      className="ml-4 min-h-[10vh] md:min-h-[120vh] "
+      id="projects"
     >
-      <h2 className="text-[30px] md-text-[50px] font-bold mb-8 text-center font-[kalam]">
+      <h2 className="text-[30px] md:text-[50px] font-bold mb-8 text-center font-[kalam]">
         Featured Projects
       </h2>
       <div className="flex flex-wrap gap-[50px] justify-center mt-[60px] ">

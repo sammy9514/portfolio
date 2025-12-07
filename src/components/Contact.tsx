@@ -1,10 +1,10 @@
 const Contact = () => {
   return (
-    <div className="min-h-[70vh] mt-[100px] ml-4">
-      <h2 className="text-center font-semibold mt-10 text-[30px] md-text-[50px] font-[Kalam] ">
+    <div className="min-h-[70vh] mt-[100px] ml-4" id="contact">
+      <h2 className="text-center font-semibold mt-10 text-[30px] md:text-[50px] font-[Kalam] ">
         Let's Build Something Great!
       </h2>
-      <h3 className="text-center text-[20px] md-text-[30px] ">
+      <h3 className="text-center text-[20px] md:text-[30px] ">
         Open to new opportunities. Let's chat!
       </h3>
       <div
@@ -47,7 +47,7 @@ const Contact = () => {
           {/* Button */}
           <div className="text-center mt-4 ">
             <button
-              className=" px-6 md-px-12 py-3 text-2xl bg-[#1B66C0] text-white rounded hover:bg-[#19559d] transition-colors font-semibold"
+              className=" px-6 md:px-12 py-3 text-2xl bg-[#1B66C0] text-white rounded hover:bg-[#19559d] transition-colors font-semibold"
               style={{ fontFamily: '"Patrick Hand", cursive' }}
             >
               Send Note

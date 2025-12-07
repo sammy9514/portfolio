@@ -31,7 +31,7 @@ const Skill = () => {
 
   return (
     <div
-      className="py-16 px-4 sm:px-6 min-h-[10vh] md-min-h-[70vh] "
+      className="py-16 px-4 sm:px-6 min-h-[10vh] md:min-h-[70vh] "
       id="skills"
     >
       <div className="max-w-6xl mx-auto">
@@ -41,7 +41,7 @@ const Skill = () => {
           // whileInView={{ opacity: 1, scale: 1 }}
           // transition={{ duration: 0.3, delay: 0.1 }}
           // viewport={{ once: true }}
-          className=" text-[30px] md-text-[50px] font-bold mb-8 text-center font-[kalam] "
+          className=" text-[30px] md:text-[50px] font-bold mb-8 text-center font-[kalam] "
         >
           Skills & Technologies
         </motion.h2>
@@ -90,7 +90,7 @@ const Skill = () => {
         </motion.div>
 
         {/* Optional: Add a sticky note for learning */}
-        <div className="mt-8 inline-block bg-yellow-200 px-4 py-3 rounded-lg border-2 border-yellow-400 shadow-lg rotate-[-2deg] hover:rotate-0 transition-transform">
+        <div className="mt-8 inline-block bg-yellow-200 px-4 py-3 rounded-lg border-2 border-yellow-400 shadow-lg -rotate-2 hover:rotate-0 transition-transform">
           <p className="text-lg font-bold">
             🚀 Currently learning: Web3 & AI/ML
           </p>
