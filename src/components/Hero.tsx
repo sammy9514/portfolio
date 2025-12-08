@@ -37,7 +37,9 @@ const Hero = () => {
       </div>
 
       <button className="px-11 py-3 text-white bg-[#1B66C0] rounded-md -rotate-2 mt-9 text-[23px] font-semibold hover:bg-[#19559d] cursor-pointer hover:rotate-0 transition-all ease-in-out duration-500 ">
-        Hire me
+        <a href="mailto:ogunyemiayomide700@gmail.com" className="no-underline">
+          Hire me
+        </a>
       </button>
     </motion.div>
   );

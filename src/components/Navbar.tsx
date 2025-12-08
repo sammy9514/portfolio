@@ -1,3 +1,4 @@
+import { Menu } from "lucide-react";
 import { motion } from "motion/react";
 
 const Navbar = () => {
@@ -25,6 +26,9 @@ const Navbar = () => {
             {item}
           </a>
         ))}
+      </div>
+      <div className="md:hidden  ">
+        <Menu size={24} />{" "}
       </div>
     </div>
   );
