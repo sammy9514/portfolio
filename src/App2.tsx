@@ -152,7 +152,7 @@ export const App2 = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-amber-50 via-orange-50 to-yellow-50">
+    <div className="min-h-screen bg-linear-to-br from-amber-50 via-orange-50 to-yellow-50">
       <link
         href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap"
         rel="stylesheet"
@@ -161,7 +161,7 @@ export const App2 = () => {
       {/* Progress Bar */}
       <div className="fixed top-0 left-0 right-0 h-2 bg-amber-200 z-50 border-b-2 border-amber-300">
         <div
-          className="h-full bg-gradient-to-r from-red-400 to-blue-400 transition-all"
+          className="h-full bg-linear-to-r from-red-400 to-blue-400 transition-all"
           style={{ width: `${scrollProgress}%` }}
         />
       </div>
@@ -270,7 +270,7 @@ export const App2 = () => {
                 id="hero-content"
                 className="max-w-4xl text-center"
               >
-                <div className="inline-block bg-yellow-200 px-4 py-2 rounded-lg mb-4 rotate-[-2deg] shadow-md border-2 border-yellow-400">
+                <div className="inline-block bg-yellow-200 px-4 py-2 rounded-lg mb-4 -rotate-2 shadow-md border-2 border-yellow-400">
                   <p
                     className="text-xl font-bold"
                     style={{ fontFamily: "Caveat, cursive" }}
@@ -285,7 +285,7 @@ export const App2 = () => {
                 >
                   Full-Stack Developer
                 </h1>
-                <div className="inline-block bg-blue-200 px-4 py-2 rounded-lg rotate-[1deg] border-2 border-blue-400 mb-6">
+                <div className="inline-block bg-blue-200 px-4 py-2 rounded-lg rotate-1 border-2 border-blue-400 mb-6">
                   <h2
                     className="text-3xl sm:text-5xl font-bold"
                     style={{ fontFamily: "Caveat, cursive" }}
@@ -343,7 +343,7 @@ export const App2 = () => {
                   <AnimatedSection
                     key={i}
                     id={`stat-${i}`}
-                    className="text-center p-6 bg-pink-50 rounded-lg shadow-md border-2 border-pink-300 hover:border-pink-500 transition-all transform hover:scale-105 hover:rotate-[-2deg]"
+                    className="text-center p-6 bg-pink-50 rounded-lg shadow-md border-2 border-pink-300 hover:border-pink-500 transition-all transform hover:scale-105 hover:-rotate-2"
                   >
                     <p
                       className="text-5xl font-bold mb-2"
@@ -385,7 +385,7 @@ export const App2 = () => {
                   </div>
 
                   <div className="space-y-4">
-                    <div className="bg-green-100 p-6 rounded-lg border-2 border-green-400 transform rotate-[-1deg] hover:rotate-0 transition-transform shadow-md">
+                    <div className="bg-green-100 p-6 rounded-lg border-2 border-green-400 transform -rotate-1 hover:rotate-0 transition-transform shadow-md">
                       <h3
                         className="text-3xl font-bold mb-3 flex items-center gap-2"
                         style={{ fontFamily: "Caveat, cursive" }}
@@ -403,7 +403,7 @@ export const App2 = () => {
                       </ul>
                     </div>
 
-                    <div className="bg-purple-100 p-6 rounded-lg border-2 border-purple-400 transform rotate-[1deg] hover:rotate-0 transition-transform shadow-md">
+                    <div className="bg-purple-100 p-6 rounded-lg border-2 border-purple-400 transform rotate-1 hover:rotate-0 transition-transform shadow-md">
                       <h3
                         className="text-3xl font-bold mb-3 flex items-center gap-2"
                         style={{ fontFamily: "Caveat, cursive" }}
@@ -597,7 +597,7 @@ export const App2 = () => {
                   Open to new opportunities. Let's chat!
                 </p>
 
-                <div className="bg-gradient-to-br from-blue-50 to-purple-50 p-12 rounded-lg shadow-xl border-3 border-gray-800 mb-8 max-w-3xl mx-auto">
+                <div className="bg-linear-to-br from-blue-50 to-purple-50 p-12 rounded-lg shadow-xl border-3 border-gray-800 mb-8 max-w-3xl mx-auto">
                   <div className="grid sm:grid-cols-3 gap-6">
                     {[
                       {
@@ -635,7 +635,7 @@ export const App2 = () => {
                   </div>
                 </div>
 
-                <div className="inline-block bg-green-200 px-6 py-4 rounded-lg border-2 border-green-400 shadow-lg rotate-[-2deg] hover:rotate-0 transition-transform">
+                <div className="inline-block bg-green-200 px-6 py-4 rounded-lg border-2 border-green-400 shadow-lg -rotate-2 hover:rotate-0 transition-transform">
                   <p
                     className="text-2xl font-bold"
                     style={{ fontFamily: "Caveat, cursive" }}
