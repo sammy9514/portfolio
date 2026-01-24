@@ -60,7 +60,7 @@ export const App2 = () => {
   const stats = [
     { number: "3+", label: "Years Experience" },
     { number: "20+", label: "Projects" },
-    { number: "50K+", label: "Users" },
+    { number: "[...]", label: "" },
     { number: "95%", label: "Satisfaction" },
   ];
 
@@ -97,56 +97,51 @@ export const App2 = () => {
 
   const experience = [
     {
-      title: "Senior Frontend Developer",
-      company: "TechCorp Inc.",
-      period: "2022 - Present",
+      title: "Full Stack Developer",
+      company: "CodeLab",
+      period: "2023 - 2024",
       points: [
         "Led architecture (40% faster)",
-        "Mentored 5 developers",
+        "Mentored secondary school students",
         "Built design system",
         "Reduced bugs 35%",
       ],
     },
     {
-      title: "Full Stack Developer",
-      company: "StartupXYZ",
-      period: "2020 - 2022",
-      points: [
-        "Built 3 MVPs",
-        "$2M+ payments processed",
-        "User research",
-        "AWS infrastructure",
-      ],
+      title: "FrontEnd Developer",
+      company: "Next",
+      period: "2023 - 2024",
+      points: ["Built 2 MVPs", "User research"],
     },
   ];
 
   const projects = [
     {
-      title: "TaskFlow",
-      desc: "Real-time task management, 10k+ users",
+      title: "Amebo",
+      desc: "Real-time anonymous messaging platform",
       tech: ["React", "Node.js", "Socket.io"],
       achievement: "60% faster load",
       color: "blue",
     },
     {
-      title: "ShopLocal",
-      desc: "E-commerce marketplace",
-      tech: ["Next.js", "Stripe", "MongoDB"],
-      achievement: "$500k+ processed",
-      color: "green",
-    },
-    {
-      title: "CodeSnippet",
-      desc: "VS Code extension, 50k+ installs",
+      title: "Paymonitor",
+      desc: "Payroll application for tracking employee's payments ",
       tech: ["TypeScript", "VS Code API"],
       achievement: "4.8★ rating",
       color: "purple",
     },
     {
-      title: "AnalyticsPro",
-      desc: "Real-time analytics dashboard",
-      tech: ["React", "D3.js", "Python"],
-      achievement: "1M+ events/day",
+      title: "Doodle",
+      desc: "Multiplayer draw n guess application for friends and family to play and have fun",
+      tech: ["React", "Socket.io", "Node.js"],
+      achievement: "$500k+ processed",
+      color: "green",
+    },
+    {
+      title: "Pomodoro Timer with ambient sound ",
+      desc: "Keeps Students and remote workers accountable and consistent without burning out  ",
+      tech: ["Blazor", "SQL", "C#"],
+      achievement: "Learnt new language",
       color: "red",
     },
   ];
@@ -298,7 +293,7 @@ export const App2 = () => {
                   className="text-xl sm:text-2xl mb-8 text-gray-700 max-w-3xl mx-auto leading-relaxed"
                   style={{ fontFamily: "Caveat, cursive" }}
                 >
-                  4+ years crafting scalable web applications. Passionate about
+                  3+ years crafting scalable web applications. Passionate about
                   clean code, great UX, and solving complex problems.
                 </p>
 
@@ -382,8 +377,8 @@ export const App2 = () => {
                       style={{ fontFamily: "Caveat, cursive" }}
                     >
                       Results-driven developer who loves turning complex
-                      problems into elegant solutions. Started coding at 15,
-                      earned CS degree, building production apps ever since.
+                      problems into elegant solutions. Started coding at 17,
+                      building production apps ever since.
                     </p>
                   </div>
 
@@ -417,11 +412,13 @@ export const App2 = () => {
                         className="text-xl"
                         style={{ fontFamily: "Caveat, cursive" }}
                       >
-                        <span className="font-bold">B.S. Computer Science</span>
+                        <span className="font-bold">
+                          A level Computer Science
+                        </span>
                         <br />
-                        University of Technology
+                        Itchen College
                         <br />
-                        GPA: 3.8 · 2015-2019
+                        GPA: A* · 2024-2026
                       </p>
                     </div>
                   </div>
