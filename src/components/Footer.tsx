@@ -7,8 +7,11 @@ const Footer = () => {
         <div className="flex gap-4 justify-center">
           {[
             { icon: Mail, href: "mailto:ogunyemiayomide700@gmail.com" },
-            { icon: Github, href: "https://github.com" },
-            { icon: Linkedin, href: "https://linkedin.com" },
+            { icon: Github, href: "https://github.com/sammy9514" },
+            {
+              icon: Linkedin,
+              href: "https://www.linkedin.com/in/sammy-teevee-aa15b6238/",
+            },
           ].map((social, i) => (
             <a
               key={i}

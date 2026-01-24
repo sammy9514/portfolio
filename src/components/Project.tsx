@@ -22,15 +22,15 @@ const Project = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3, delay: 0.2 }}
               viewport={{ once: true }}
-              className={`w-[370px] min-h-[450px] shadow-md bg-white p-2 ${
+              className={`md:w-[370px] w-[270px] md:h-[450px] h-[370px] shadow-md bg-white p-2 ${
                 index % 2 === 0 ? "rotate-2" : "-rotate-3"
               } hover:scale-105 hover:rotate-none transition-all duration-300 ease-in-out `}
             >
-              <div className="w-full h-[60%] ">
+              <div className="w-full h-[70%]] ">
                 <img
                   src={project.img}
                   alt=""
-                  className="w-full h-full bg-contain"
+                  className="w-full h-full object-cover"
                 />
               </div>
               <div className="px-4 mt-3 ">

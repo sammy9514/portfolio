@@ -30,7 +30,7 @@ const Hero = () => {
           {/* I turn ideas into real, working project */}I build things people
           imagine.
         </h2>
-        <p className="text-[23px] w-[70%] mt-9 ">
+        <p className="text-[25px] w-[80%] mt-9 ">
           I build clean, functional web experiences. I like solving problems and
           turning ideas into real products.
         </p>

@@ -198,7 +198,7 @@ export const App2 = () => {
                     >
                       {section}
                     </button>
-                  )
+                  ),
                 )}
                 <button
                   onClick={() => scrollTo("contact")}
@@ -231,7 +231,7 @@ export const App2 = () => {
                       >
                         {section}
                       </button>
-                    )
+                    ),
                   )}
                 </div>
               </div>
@@ -298,7 +298,7 @@ export const App2 = () => {
                   className="text-xl sm:text-2xl mb-8 text-gray-700 max-w-3xl mx-auto leading-relaxed"
                   style={{ fontFamily: "Caveat, cursive" }}
                 >
-                  5+ years crafting scalable web applications. Passionate about
+                  4+ years crafting scalable web applications. Passionate about
                   clean code, great UX, and solving complex problems.
                 </p>
 
@@ -320,9 +320,12 @@ export const App2 = () => {
 
                 <div className="flex gap-4 justify-center">
                   {[
-                    { icon: Mail, href: "mailto:alex@email.com" },
-                    { icon: Github, href: "https://github.com" },
-                    { icon: Linkedin, href: "https://linkedin.com" },
+                    { icon: Mail, href: "mailto:ogunyemiayomide700@gmail.com" },
+                    { icon: Github, href: "https://github.com/sammy9514" },
+                    {
+                      icon: Linkedin,
+                      href: "https://www.linkedin.com/in/sammy-teevee-aa15b6238/",
+                    },
                   ].map((social, i) => (
                     <a
                       key={i}
@@ -603,17 +606,17 @@ export const App2 = () => {
                       {
                         icon: Mail,
                         label: "Email",
-                        href: "mailto:alex@email.com",
+                        href: "mailto:ogunyemiayomide700@gmail.com",
                       },
                       {
                         icon: Github,
                         label: "GitHub",
-                        href: "https://github.com",
+                        href: "https://github.com/sammy9514",
                       },
                       {
                         icon: Linkedin,
                         label: "LinkedIn",
-                        href: "https://linkedin.com",
+                        href: "https://www.linkedin.com/in/sammy-teevee-aa15b6238/",
                       },
                     ].map((item, i) => (
                       <a
@@ -658,7 +661,7 @@ export const App2 = () => {
             className="text-lg opacity-75"
             style={{ fontFamily: "Caveat, cursive" }}
           >
-            © 2025 Ayomide Ogunyemi
+            © 2026 Ayomide Ogunyemi
           </p>
         </div>
       </footer>
