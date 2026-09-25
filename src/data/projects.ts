@@ -29,7 +29,7 @@ export const projects: Project[] = [
   {
     name: "Doodle",
     tagline: "Multiplayer draw & guess",
-    img: "/doodle.jpg",
+    img: "/doodle.png",
     blurb:
       "A multiplayer draw-and-guess game. One player draws on a shared canvas while everyone else races to guess the word before the round timer runs out.",
     built: [
@@ -54,7 +54,7 @@ export const projects: Project[] = [
     ],
     tech: ["TypeScript", "React", "Node.js", "MongoDB"],
     repo: "https://github.com/sammy9514",
-    live: "",
+    live: "ff",
   },
   {
     name: "Anonymously",

@@ -74,8 +74,12 @@ body {
       var(--line) calc(var(--rule) - 1px),
       var(--line) var(--rule)
     );
-  background-size: 100% 100%, 100% var(--rule);
-  background-position: 0 0, 0 0;
+  background-size:
+    100% 100%,
+    100% var(--rule);
+  background-position:
+    0 0,
+    0 0;
   padding: calc(var(--rule) * 2) 1.25rem calc(var(--rule) * 2)
     calc(var(--margin-x) + 0.9rem);
 }

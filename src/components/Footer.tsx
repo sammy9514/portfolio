@@ -1,11 +1,19 @@
 import { Mail, Github, Linkedin } from "lucide-react";
 
 const links = [
-  { icon: Mail, href: "mailto:ogunyemiayomide700@gmail.com", label: "Email Ayomide" },
-  { icon: Github, href: "https://github.com/sammy9514", label: "GitHub profile" },
+  {
+    icon: Mail,
+    href: "mailto:ogunyemiayomide700@gmail.com",
+    label: "Email Ayomide",
+  },
+  {
+    icon: Github,
+    href: "https://github.com/sammy9514",
+    label: "GitHub profile",
+  },
   {
     icon: Linkedin,
-    href: "https://www.linkedin.com/in/sammy-teevee-aa15b6238/",
+    href: "https://www.linkedin.com/in/ayomideowo/",
     label: "LinkedIn profile",
   },
 ];

@@ -62,7 +62,7 @@ const Contact = () => {
         <span className="pen-underline">Let's build something</span>
       </h2>
       <p className="mt-4 text-[19px] text-pencil md:text-[23px]">
-        Open to internships, junior roles and freelance work. Fastest reply is{" "}
+        Open to internships and freelance work. Fastest reply is{" "}
         <a
           href={`mailto:${EMAIL}`}
           className="text-ballpoint underline decoration-dotted underline-offset-4"
@@ -73,101 +73,110 @@ const Contact = () => {
       </p>
 
       <Reveal className="no-print mt-10">
-      <form
-        onSubmit={handleSubmit}
-        noValidate
-        className="sketch-box space-y-8 p-6 md:p-10"
-      >
-        <div className="grid gap-8 sm:grid-cols-2">
+        <form
+          onSubmit={handleSubmit}
+          noValidate
+          className="sketch-box space-y-8 p-6 md:p-10"
+        >
+          <div className="grid gap-8 sm:grid-cols-2">
+            <div>
+              <label
+                htmlFor="name"
+                className="mb-2 block text-[17px] text-pencil"
+              >
+                Your name
+              </label>
+              <input
+                id="name"
+                name="name"
+                type="text"
+                autoComplete="name"
+                aria-invalid={Boolean(errors.name)}
+                aria-describedby={errors.name ? "name-error" : undefined}
+                className={field}
+              />
+              {errors.name && (
+                <p id="name-error" className="mt-1.5 text-[15px] text-redpen">
+                  {errors.name}
+                </p>
+              )}
+            </div>
+
+            <div>
+              <label
+                htmlFor="email"
+                className="mb-2 block text-[17px] text-pencil"
+              >
+                Your email
+              </label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                autoComplete="email"
+                aria-invalid={Boolean(errors.email)}
+                aria-describedby={errors.email ? "email-error" : undefined}
+                className={field}
+              />
+              {errors.email && (
+                <p id="email-error" className="mt-1.5 text-[15px] text-redpen">
+                  {errors.email}
+                </p>
+              )}
+            </div>
+          </div>
+
           <div>
-            <label htmlFor="name" className="mb-2 block text-[17px] text-pencil">
-              Your name
+            <label
+              htmlFor="message"
+              className="mb-2 block text-[17px] text-pencil"
+            >
+              Message
             </label>
-            <input
-              id="name"
-              name="name"
-              type="text"
-              autoComplete="name"
-              aria-invalid={Boolean(errors.name)}
-              aria-describedby={errors.name ? "name-error" : undefined}
-              className={field}
+            <textarea
+              id="message"
+              name="message"
+              rows={4}
+              aria-invalid={Boolean(errors.message)}
+              aria-describedby={errors.message ? "message-error" : undefined}
+              className={`${field} resize-none`}
             />
-            {errors.name && (
-              <p id="name-error" className="mt-1.5 text-[15px] text-redpen">
-                {errors.name}
+            {errors.message && (
+              <p id="message-error" className="mt-1.5 text-[15px] text-redpen">
+                {errors.message}
               </p>
             )}
           </div>
 
-          <div>
-            <label htmlFor="email" className="mb-2 block text-[17px] text-pencil">
-              Your email
-            </label>
-            <input
-              id="email"
-              name="email"
-              type="email"
-              autoComplete="email"
-              aria-invalid={Boolean(errors.email)}
-              aria-describedby={errors.email ? "email-error" : undefined}
-              className={field}
-            />
-            {errors.email && (
-              <p id="email-error" className="mt-1.5 text-[15px] text-redpen">
-                {errors.email}
-              </p>
-            )}
-          </div>
-        </div>
+          <div className="flex flex-wrap items-center gap-5">
+            <button
+              type="submit"
+              disabled={status === "sending"}
+              className="flex items-center gap-2 rounded-md bg-ballpoint px-8 py-3 font-[Kalam] text-[20px] font-bold text-white transition-colors hover:bg-[#163f99] disabled:opacity-60"
+            >
+              {status === "sending" ? "Sending…" : "Send note"}
+              <Send size={17} aria-hidden="true" />
+            </button>
 
-        <div>
-          <label htmlFor="message" className="mb-2 block text-[17px] text-pencil">
-            Message
-          </label>
-          <textarea
-            id="message"
-            name="message"
-            rows={4}
-            aria-invalid={Boolean(errors.message)}
-            aria-describedby={errors.message ? "message-error" : undefined}
-            className={`${field} resize-none`}
-          />
-          {errors.message && (
-            <p id="message-error" className="mt-1.5 text-[15px] text-redpen">
-              {errors.message}
+            <p aria-live="polite" className="text-[17px]">
+              {status === "sent" && (
+                <span className="flex items-center gap-1.5 text-green-700">
+                  <Check size={17} aria-hidden="true" />
+                  Thanks, I will get back to you.
+                </span>
+              )}
+              {status === "error" && (
+                <span className="text-redpen">
+                  That didn't send. Email me at{" "}
+                  <a href={`mailto:${EMAIL}`} className="underline">
+                    {EMAIL}
+                  </a>
+                  .
+                </span>
+              )}
             </p>
-          )}
-        </div>
-
-        <div className="flex flex-wrap items-center gap-5">
-          <button
-            type="submit"
-            disabled={status === "sending"}
-            className="flex items-center gap-2 rounded-md bg-ballpoint px-8 py-3 font-[Kalam] text-[20px] font-bold text-white transition-colors hover:bg-[#163f99] disabled:opacity-60"
-          >
-            {status === "sending" ? "Sending…" : "Send note"}
-            <Send size={17} aria-hidden="true" />
-          </button>
-
-          <p aria-live="polite" className="text-[17px]">
-            {status === "sent" && (
-              <span className="flex items-center gap-1.5 text-green-700">
-                <Check size={17} aria-hidden="true" />
-                Thanks, I will get back to you.
-              </span>
-            )}
-            {status === "error" && (
-              <span className="text-redpen">
-                That didn't send. Email me at{" "}
-                <a href={`mailto:${EMAIL}`} className="underline">
-                  {EMAIL}
-                </a>
-                .
-              </span>
-            )}
-          </p>
-        </div>
-      </form>
+          </div>
+        </form>
       </Reveal>
     </section>
   );

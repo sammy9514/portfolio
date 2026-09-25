@@ -18,7 +18,7 @@ const About = () => {
       </h2>
 
       <div className="mt-8 grid gap-8 md:grid-cols-[1.6fr_1fr] md:items-start">
-        <div className="space-y-5 text-[19px] leading-[2rem] md:text-[23px]">
+        <div className="space-y-5 text-[19px] leading-8 md:text-[23px]">
           <p>
             I'm a {age}-year-old software engineer. I've been writing code since{" "}
             {START_YEAR}, so {years} years of turning ideas into things you can
@@ -33,7 +33,9 @@ const About = () => {
           </p>
           <p>
             Right now I'm going deeper on{" "}
-            <span className="highlighter-pink highlighter">cloud architecture</span>{" "}
+            <span className="highlighter-pink highlighter">
+              cloud architecture
+            </span>{" "}
             and AI integration, and building side projects that are slightly
             beyond what I know how to do yet.
           </p>
@@ -43,9 +45,10 @@ const About = () => {
           <span className="tape -top-3 left-1/2 -translate-x-1/2 -rotate-2" />
           <h3 className="font-[Kalam] text-[22px] font-bold">Quick facts</h3>
           <ul className="mt-3 space-y-2 text-[18px]">
-            <li>Based in Nigeria, open to remote</li>
+            <li>Based in UK, open to remote</li>
             <li>{years}+ years building for the web</li>
             <li>4 shipped side projects</li>
+            <li>Co-founded 1 startup</li>
             <li>Happiest in TypeScript</li>
           </ul>
           <Squiggle className="mt-4 h-2 w-full text-ink/35" />
