@@ -13,7 +13,7 @@ const About = () => {
   return (
     <Reveal as="section" className="scroll-mt-24 py-14 md:py-20">
       <span id="about" className="block -mt-24 pt-24" aria-hidden="true" />
-      <h2 className="font-[Kalam] text-[30px] font-bold md:text-[46px]">
+      <h2 className="font-[Kalam] text-[clamp(1.7rem,5.5vw,2.9rem)] font-bold">
         <span className="pen-underline">About me</span>
       </h2>
 
@@ -21,7 +21,7 @@ const About = () => {
         <div className="space-y-5 text-[19px] leading-[2rem] md:text-[23px]">
           <p>
             I'm a {age}-year-old software engineer. I've been writing code since{" "}
-            {START_YEAR} — {years} years of turning ideas into things you can
+            {START_YEAR}, so {years} years of turning ideas into things you can
             actually open in a browser and use.
           </p>
           <p>

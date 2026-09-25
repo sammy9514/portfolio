@@ -124,7 +124,7 @@ const Card = ({ project, index }: { project: ProjectType; index: number }) => {
 
 const Project = () => (
   <section id="projects" className="scroll-mt-24 py-14 md:py-20">
-    <h2 className="font-[Kalam] text-[30px] font-bold md:text-[46px]">
+    <h2 className="font-[Kalam] text-[clamp(1.7rem,5.5vw,2.9rem)] font-bold">
       <span className="pen-underline">Things I've built</span>
     </h2>
     <p className="mt-4 text-[19px] text-pencil md:text-[22px]">

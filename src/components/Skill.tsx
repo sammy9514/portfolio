@@ -13,7 +13,7 @@ const Skill = () => {
 
   return (
     <section id="skills" className="scroll-mt-24 py-14 md:py-20">
-      <h2 className="font-[Kalam] text-[30px] font-bold md:text-[46px]">
+      <h2 className="font-[Kalam] text-[clamp(1.7rem,5.5vw,2.9rem)] font-bold">
         <span className="pen-underline">Skills &amp; tools</span>
       </h2>
 

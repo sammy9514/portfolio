@@ -12,7 +12,7 @@ const Hero = () => (
       onMount
       delay={0.06}
       as="h1"
-      className="mt-1 font-[Kalam] text-[40px] leading-[1.15] font-bold md:text-[72px]"
+      className="mt-1 font-[Kalam] text-[clamp(1.9rem,8.5vw,4.5rem)] leading-[1.15] font-bold"
     >
       <span className="highlighter -rotate-1 inline-block">Ayomide Ogunyemi</span>
     </Reveal>
@@ -21,7 +21,7 @@ const Hero = () => (
       onMount
       delay={0.12}
       as="p"
-      className="mt-3 rotate-[0.6deg] font-[Kalam] text-[24px] text-pencil md:text-[36px]"
+      className="mt-3 rotate-[0.6deg] font-[Kalam] text-[clamp(1.3rem,5vw,2.25rem)] text-pencil"
     >
       I build things people imagine.
     </Reveal>
@@ -55,7 +55,7 @@ const Hero = () => (
       </a>
       <a
         href="mailto:ogunyemiayomide700@gmail.com"
-        className="flex items-center gap-2 text-[18px] text-ballpoint underline decoration-dotted underline-offset-4"
+        className="flex items-center gap-2 text-[17px] break-all text-ballpoint underline decoration-dotted underline-offset-4"
       >
         <Mail size={17} aria-hidden="true" />
         ogunyemiayomide700@gmail.com

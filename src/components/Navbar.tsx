@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
-import { motion, AnimatePresence } from "motion/react";
+import { AnimatePresence, motion } from "motion/react";
 
 const items = [
   { label: "About", id: "about", color: "#ff9ea5" },
@@ -39,15 +39,12 @@ const Navbar = () => {
 
   return (
     <header className="no-print relative z-30 flex items-start justify-between gap-4">
-      <motion.a
+      <a
         href="#top"
-        initial={{ opacity: 0, x: -30 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.4 }}
         className="font-[Kalam] text-[26px] leading-none font-bold md:text-[34px]"
       >
         Ayomide<span className="text-redpen">.</span>
-      </motion.a>
+      </a>
 
       <nav aria-label="Sections" className="hidden md:block">
         <ul className="flex items-end gap-1">

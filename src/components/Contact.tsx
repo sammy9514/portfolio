@@ -36,7 +36,7 @@ const Contact = () => {
     if (!FORM_ENDPOINT) {
       window.location.href = `mailto:${EMAIL}?subject=${encodeURIComponent(
         `Portfolio message from ${name}`,
-      )}&body=${encodeURIComponent(`${message}\n\n— ${name} (${email})`)}`;
+      )}&body=${encodeURIComponent(`${message}\n\nFrom ${name} (${email})`)}`;
       setStatus("sent");
       return;
     }
@@ -58,7 +58,7 @@ const Contact = () => {
 
   return (
     <section id="contact" className="scroll-mt-24 py-14 md:py-20">
-      <h2 className="font-[Kalam] text-[30px] font-bold md:text-[46px]">
+      <h2 className="font-[Kalam] text-[clamp(1.7rem,5.5vw,2.9rem)] font-bold">
         <span className="pen-underline">Let's build something</span>
       </h2>
       <p className="mt-4 text-[19px] text-pencil md:text-[23px]">
@@ -153,7 +153,7 @@ const Contact = () => {
             {status === "sent" && (
               <span className="flex items-center gap-1.5 text-green-700">
                 <Check size={17} aria-hidden="true" />
-                Thanks — I'll get back to you.
+                Thanks, I will get back to you.
               </span>
             )}
             {status === "error" && (

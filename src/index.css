@@ -27,6 +27,7 @@
 }
 
 html {
+  overflow-x: clip;
   scroll-behavior: smooth;
   scroll-padding-top: 5rem;
   -webkit-text-size-adjust: 100%;
@@ -34,6 +35,8 @@ html {
 
 body {
   margin: 0;
+  overflow-x: clip;
+  overflow-wrap: break-word;
   font-family: var(--font-hand);
   color: var(--ink);
   background-color: #2f3337;
@@ -73,8 +76,8 @@ body {
     );
   background-size: 100% 100%, 100% var(--rule);
   background-position: 0 0, 0 0;
-  padding: calc(var(--rule) * 2) 2rem calc(var(--rule) * 2)
-    calc(var(--margin-x) + 1.25rem);
+  padding: calc(var(--rule) * 2) 1.25rem calc(var(--rule) * 2)
+    calc(var(--margin-x) + 0.9rem);
 }
 
 @media (min-width: 768px) {
