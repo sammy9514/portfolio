@@ -1,30 +1,39 @@
 import { Mail, Github, Linkedin } from "lucide-react";
 
-const Footer = () => {
-  return (
-    <div className="border-t-2 border-[#555] border-dashed h-[10vh] ">
-      <div className="flex justify-center items-center mt-9 gap-5 ">
-        <div className="flex gap-4 justify-center">
-          {[
-            { icon: Mail, href: "mailto:ogunyemiayomide700@gmail.com" },
-            { icon: Github, href: "https://github.com/sammy9514" },
-            {
-              icon: Linkedin,
-              href: "https://www.linkedin.com/in/sammy-teevee-aa15b6238/",
-            },
-          ].map((social, i) => (
+const links = [
+  { icon: Mail, href: "mailto:ogunyemiayomide700@gmail.com", label: "Email Ayomide" },
+  { icon: Github, href: "https://github.com/sammy9514", label: "GitHub profile" },
+  {
+    icon: Linkedin,
+    href: "https://www.linkedin.com/in/sammy-teevee-aa15b6238/",
+    label: "LinkedIn profile",
+  },
+];
+
+const Footer = () => (
+  <footer className="mt-16 border-t-2 border-dashed border-pencil/50 pt-8 pb-4">
+    <div className="flex flex-col items-center gap-5">
+      <ul className="no-print flex gap-4">
+        {links.map(({ icon: Icon, href, label }) => (
+          <li key={href}>
             <a
-              key={i}
-              href={social.href}
-              className="p-3 bg-white rounded-full shadow-lg hover:shadow-xl transition-all transform hover:scale-110 border-2 border-gray-300"
+              href={href}
+              aria-label={label}
+              {...(href.startsWith("http")
+                ? { target: "_blank", rel: "noreferrer noopener" }
+                : {})}
+              className="block rounded-full border-2 border-ink/25 bg-white p-3 shadow-md transition-transform duration-200 hover:-translate-y-1"
             >
-              <social.icon size={24} />
+              <Icon size={21} aria-hidden="true" />
             </a>
-          ))}
-        </div>
-      </div>
+          </li>
+        ))}
+      </ul>
+      <p className="text-[16px] text-pencil">
+        Built by Ayomide Ogunyemi · {new Date().getFullYear()}
+      </p>
     </div>
-  );
-};
+  </footer>
+);
 
 export default Footer;

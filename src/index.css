@@ -1,160 +1,255 @@
 @import "tailwindcss";
 
+@theme {
+  --color-paper: #fdfbf7;
+  --color-ink: #24384d;
+  --color-pencil: #5f6b76;
+  --color-ballpoint: #1b4fc0;
+  --color-redpen: #d4515c;
+  --font-hand: "Patrick Hand", "Comic Sans MS", cursive;
+  --font-marker: "Kalam", "Patrick Hand", cursive;
+}
+
 :root {
-  --paper-color: #fdfbf7;
-  --line-color: #a2a2a2;
-  --margin-color: #ff9ea5;
-  --ink-color: #2c3e50;
-  --pencil-color: #555;
+  --rule: 2rem;
+  --margin-x: 5.25rem;
+  --paper: #fdfbf7;
+  --line: #c3d2e0;
+  --margin-line: #e9a0a6;
+  --ink: #24384d;
+}
+
+@media (max-width: 767px) {
+  :root {
+    --rule: 1.75rem;
+    --margin-x: 2.75rem;
+  }
 }
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
   margin: 0;
-  font-family: "Patrick Hand", cursive;
-  background-color: #e0e0e0;
-  /* Desk background */
-  color: var(--ink-color);
+  font-family: var(--font-hand);
+  color: var(--ink);
+  background-color: #2f3337;
+  background-image:
+    radial-gradient(ellipse at 50% -10%, #45494e 0%, transparent 60%),
+    repeating-linear-gradient(
+      45deg,
+      rgba(255, 255, 255, 0.012) 0 2px,
+      transparent 2px 4px
+    );
   min-height: 100vh;
 }
 
+/* Text sits ON the ruled lines: every rhythm unit is one ruling. */
 .notebook-wrapper {
-  max-width: 1000px;
-  margin: 2rem auto;
-  min-height: calc(100vh - 4rem);
-  background-color: var(--paper-color);
-  box-shadow:
-    0 0 20px rgba(0, 0, 0, 0.1),
-    10px 10px 30px rgba(0, 0, 0, 0.15);
-  /* deeper shadow for depth */
+  max-width: 62rem;
+  margin: 0 auto;
+  background-color: var(--paper);
   position: relative;
-  border-radius: 2px 5px 5px 2px;
-
-  /* Lined Paper Effect with Margin */
+  isolation: isolate;
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.35),
+    0 18px 50px rgba(0, 0, 0, 0.45);
   background-image:
-    /* Margin Line */
     linear-gradient(
       90deg,
-      transparent 79px,
-      var(--margin-color) 79px,
-      var(--margin-color) 81px,
-      transparent 81px
+      transparent calc(var(--margin-x) - 1px),
+      var(--margin-line) calc(var(--margin-x) - 1px),
+      var(--margin-line) calc(var(--margin-x) + 1px),
+      transparent calc(var(--margin-x) + 1px)
     ),
-    /* Horizontal Lines */
-    linear-gradient(var(--line-color) 1px, transparent 1px);
-  background-size:
-    100% 100%,
-    100% 2rem;
-  background-attachment: local;
-
-  padding-left: 100px;
-  padding-right: 3rem;
-  padding-top: 2rem;
-  padding-bottom: 2rem;
+    repeating-linear-gradient(
+      var(--paper) 0,
+      var(--paper) calc(var(--rule) - 1px),
+      var(--line) calc(var(--rule) - 1px),
+      var(--line) var(--rule)
+    );
+  background-size: 100% 100%, 100% var(--rule);
+  background-position: 0 0, 0 0;
+  padding: calc(var(--rule) * 2) 2rem calc(var(--rule) * 2)
+    calc(var(--margin-x) + 1.25rem);
 }
 
-/* Noise Texture Overlay */
+@media (min-width: 768px) {
+  .notebook-wrapper {
+    margin: 2.5rem auto;
+    padding-right: 3.5rem;
+  }
+}
+
+/* Paper grain */
 .notebook-wrapper::after {
   content: "";
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0.03;
+  inset: 0;
+  opacity: 0.035;
   pointer-events: none;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-  z-index: 0;
+  z-index: 1;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-/* Spiral Binding Effect */
-.notebook-wrappr::before {
+/* Punched holes running down the margin (the old selector was misspelled,
+   so this never rendered). */
+.notebook-wrapper::before {
   content: "";
   position: absolute;
   top: 0;
   bottom: 0;
-  left: 20px;
-  width: 50px;
-  /* Slightly wider for more detail */
-  background:
-    /* The holes */
-    radial-gradient(
-        circle at 15px center,
-        #fdfbf7 6px,
-        #ccc 7px,
-        #999 8px,
-        transparent 8px
-      )
-      0 0 / 100% 2rem,
-    /* The wire spiral - front part */
-    linear-gradient(
-        to bottom right,
-        transparent 42%,
-        #444 42%,
-        #666 45%,
-        #888 48%,
-        #444 50%,
-        transparent 50%
-      )
-      0 0 / 100% 2rem,
-    /* The wire spiral - back part (shadowy) */
-    linear-gradient(
-        to bottom right,
-        transparent 50%,
-        #222 50%,
-        #333 55%,
-        transparent 55%
-      )
-      0 0 / 100% 2rem;
+  left: calc(var(--margin-x) * 0.42);
+  width: 1.15rem;
+  pointer-events: none;
+  z-index: 2;
+  background-image: radial-gradient(
+    circle at 50% 50%,
+    #2f3337 0 0.34rem,
+    rgba(0, 0, 0, 0.18) 0.34rem 0.42rem,
+    transparent 0.42rem
+  );
+  background-size: 100% calc(var(--rule) * 3);
+  background-position: 0 calc(var(--rule) * 1.5);
   background-repeat: repeat-y;
-  z-index: 10;
-  filter: drop-shadow(3px 2px 2px rgba(0, 0, 0, 0.3));
+  filter: drop-shadow(1px 1px 0 rgba(255, 255, 255, 0.55));
 }
 
-/* Scrollbar styling */
-::-webkit-scrollbar {
-  width: 10px;
+.ink-blue {
+  color: var(--color-ballpoint);
 }
 
-::-webkit-scrollbar-track {
-  background: #f1f1f1;
+/* Hand-drawn box: uneven radii read as a pen outline, not a CSS rectangle. */
+.sketch-box {
+  border: 2px solid rgba(36, 56, 77, 0.55);
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  background: rgba(255, 255, 255, 0.55);
 }
 
-::-webkit-scrollbar-thumb {
-  background: #888;
-  border-radius: 5px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #555;
-}
-
-/* Utility Classes for Notebook Look */
-.tape {
-  position: absolute;
-  top: -15px;
-  left: 50%;
-  transform: translateX(-50%) rotate(-2deg);
-  width: 120px;
-  height: 35px;
-  background-color: rgba(255, 255, 255, 0.6);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  z-index: 20;
-  backdrop-filter: blur(2px);
-  /* Jagged edges for tape */
-  mask-image: url("data:image/svg+xml,%3Csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='0' y='0' width='100%25' height='100%25' fill='black'/%3E%3C/svg%3E");
+.sketch-box-alt {
+  border-radius: 15px 225px 15px 255px / 225px 15px 255px 15px;
 }
 
 .highlighter {
-  background: linear-gradient(
-    120deg,
-    rgba(255, 235, 59, 0.4) 0%,
-    rgba(255, 235, 59, 0.4) 100%
+  background-image: linear-gradient(
+    to bottom,
+    transparent 8%,
+    rgba(255, 228, 92, 0.72) 8%,
+    rgba(255, 228, 92, 0.72) 88%,
+    transparent 88%
   );
-  border-radius: 4px 15px 4px 15px;
-  padding: 0 5px;
+  background-repeat: no-repeat;
+  padding: 0 0.35rem;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+.highlighter-pink {
+  background-image: linear-gradient(
+    to bottom,
+    transparent 8%,
+    rgba(255, 158, 165, 0.6) 8%,
+    rgba(255, 158, 165, 0.6) 88%,
+    transparent 88%
+  );
+}
+
+/* Underline drawn like a pen stroke that overshoots at both ends */
+.pen-underline {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 8' preserveAspectRatio='none'%3E%3Cpath d='M1 5 C 18 1.5, 34 7, 52 4 S 84 2, 99 5.5' stroke='%23d4515c' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: 100% 0.5rem;
+  background-position: 0 100%;
+  padding-bottom: 0.5rem;
+}
+
+.tape {
+  position: absolute;
+  width: 5.5rem;
+  height: 1.6rem;
+  background: rgba(255, 252, 235, 0.62);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.14);
+  border-left: 1px dashed rgba(0, 0, 0, 0.09);
+  border-right: 1px dashed rgba(0, 0, 0, 0.09);
+  backdrop-filter: blur(1px);
+  z-index: 3;
+}
+
+.paper-card {
+  background: #fffefb;
+  box-shadow:
+    0 1px 1px rgba(0, 0, 0, 0.1),
+    0 8px 18px rgba(0, 0, 0, 0.12);
+}
+
+.sticky-note {
+  background: #fff5a8;
+  box-shadow:
+    0 1px 1px rgba(0, 0, 0, 0.12),
+    0 10px 20px rgba(0, 0, 0, 0.14);
+  background-image: linear-gradient(
+    175deg,
+    rgba(255, 255, 255, 0.5) 0%,
+    transparent 40%
+  );
+}
+
+/* Focus ring drawn in pen, visible on paper */
+:where(a, button, input, textarea):focus-visible {
+  outline: 2.5px solid var(--color-ballpoint);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+::selection {
+  background: rgba(255, 228, 92, 0.85);
+  color: var(--ink);
+}
+
+::-webkit-scrollbar {
+  width: 11px;
+}
+::-webkit-scrollbar-track {
+  background: #2f3337;
+}
+::-webkit-scrollbar-thumb {
+  background: #6b7480;
+  border-radius: 6px;
+  border: 2px solid #2f3337;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #8a95a3;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media print {
+  body {
+    background: #fff;
+  }
+  .notebook-wrapper {
+    box-shadow: none;
+    background-image: none;
+    max-width: none;
+    padding: 0;
+  }
+  .notebook-wrapper::before,
+  .notebook-wrapper::after,
+  .no-print {
+    display: none !important;
+  }
 }

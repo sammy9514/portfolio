@@ -1,67 +1,175 @@
+import { useState, type FormEvent } from "react";
+import { Send, Check } from "lucide-react";
+import Reveal from "./Reveal";
+
+const EMAIL = "ogunyemiayomide700@gmail.com";
+
+/** Set VITE_FORMSPREE_ID to post the form; otherwise it opens the user's mail client. */
+const FORM_ENDPOINT = import.meta.env.VITE_FORMSPREE_ID
+  ? `https://formspree.io/f/${import.meta.env.VITE_FORMSPREE_ID}`
+  : null;
+
+type Status = "idle" | "sending" | "sent" | "error";
+
+const field =
+  "w-full border-b-2 border-ink/35 bg-transparent pb-2 text-[19px] transition-colors hover:border-ink focus:border-ballpoint focus:outline-none md:text-[21px]";
+
 const Contact = () => {
+  const [status, setStatus] = useState<Status>("idle");
+  const [errors, setErrors] = useState<Record<string, string>>({});
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const data = new FormData(e.currentTarget);
+    const name = String(data.get("name") ?? "").trim();
+    const email = String(data.get("email") ?? "").trim();
+    const message = String(data.get("message") ?? "").trim();
+
+    const next: Record<string, string> = {};
+    if (!name) next.name = "I'd like to know who you are.";
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))
+      next.email = "That email doesn't look right.";
+    if (message.length < 10) next.message = "A little more detail, please.";
+    setErrors(next);
+    if (Object.keys(next).length) return;
+
+    if (!FORM_ENDPOINT) {
+      window.location.href = `mailto:${EMAIL}?subject=${encodeURIComponent(
+        `Portfolio message from ${name}`,
+      )}&body=${encodeURIComponent(`${message}\n\n— ${name} (${email})`)}`;
+      setStatus("sent");
+      return;
+    }
+
+    setStatus("sending");
+    try {
+      const res = await fetch(FORM_ENDPOINT, {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        body: data,
+      });
+      if (!res.ok) throw new Error(String(res.status));
+      setStatus("sent");
+      e.currentTarget.reset();
+    } catch {
+      setStatus("error");
+    }
+  };
+
   return (
-    <div className="min-h-[70vh] mt-[100px] ml-4" id="contact">
-      <h2 className="text-center font-semibold mt-10 text-[30px] md:text-[50px] font-[Kalam] ">
-        Let's Build Something Great!
+    <section id="contact" className="scroll-mt-24 py-14 md:py-20">
+      <h2 className="font-[Kalam] text-[30px] font-bold md:text-[46px]">
+        <span className="pen-underline">Let's build something</span>
       </h2>
-      <h3 className="text-center text-[20px] md:text-[30px] ">
-        Open to new opportunities. Let's chat!
-      </h3>
-      <div
-        className="border-2 mt-12 w-full p-6 md:p-12 bg-white"
-        style={{
-          borderRadius: "255px 15px 225px 15px / 15px 225px 15px 255px",
-        }}
+      <p className="mt-4 text-[19px] text-pencil md:text-[23px]">
+        Open to internships, junior roles and freelance work. Fastest reply is{" "}
+        <a
+          href={`mailto:${EMAIL}`}
+          className="text-ballpoint underline decoration-dotted underline-offset-4"
+        >
+          email
+        </a>
+        .
+      </p>
+
+      <Reveal className="no-print mt-10">
+      <form
+        onSubmit={handleSubmit}
+        noValidate
+        className="sketch-box space-y-8 p-6 md:p-10"
       >
-        <div className="flex flex-col gap-6 md:gap-8">
-          {/* Name and Email Row */}
-          <div className="flex flex-col sm:flex-row gap-6 md:gap-8">
-            <div className="w-full">
-              <label className="block text-lg md:text-xl mb-2 text-gray-600">
-                Name
-              </label>
-              <input
-                type="text"
-                className="w-full text-lg md:text-xl pb-2 border-b-2 border-gray-400 focus:border-gray-800 focus:outline-none hover:border-gray-800 transition-colors bg-transparent"
-                style={{ fontFamily: '"Patrick Hand", cursive' }}
-              />
-            </div>
-            <div className="w-full">
-              <label className="block text-lg md:text-xl mb-2 text-gray-600">
-                Email
-              </label>
-              <input
-                type="email"
-                className="w-full text-lg md:text-xl pb-2 border-b-2 border-gray-400 focus:border-gray-800 focus:outline-none hover:border-gray-800 transition-colors bg-transparent"
-                style={{ fontFamily: '"Patrick Hand", cursive' }}
-              />
-            </div>
-          </div>
-
-          {/* Message */}
+        <div className="grid gap-8 sm:grid-cols-2">
           <div>
-            <label className="block text-lg md:text-xl mb-2 text-gray-600">
-              Message
+            <label htmlFor="name" className="mb-2 block text-[17px] text-pencil">
+              Your name
             </label>
-            <textarea
-              rows={4}
-              className="w-full text-lg md:text-xl pb-2 border-b-2 border-gray-400 focus:border-gray-800 focus:outline-none hover:border-gray-800 transition-colors bg-transparent resize-none"
-              style={{ fontFamily: '"Patrick Hand", cursive' }}
+            <input
+              id="name"
+              name="name"
+              type="text"
+              autoComplete="name"
+              aria-invalid={Boolean(errors.name)}
+              aria-describedby={errors.name ? "name-error" : undefined}
+              className={field}
             />
+            {errors.name && (
+              <p id="name-error" className="mt-1.5 text-[15px] text-redpen">
+                {errors.name}
+              </p>
+            )}
           </div>
 
-          {/* Button */}
-          <div className="text-center mt-2 md:mt-4">
-            <button
-              className="px-8 md:px-12 py-2.5 md:py-3 text-xl md:text-2xl bg-[#1B66C0] text-white rounded hover:bg-[#19559d] transition-colors font-semibold"
-              style={{ fontFamily: '"Patrick Hand", cursive' }}
-            >
-              Send Note
-            </button>
+          <div>
+            <label htmlFor="email" className="mb-2 block text-[17px] text-pencil">
+              Your email
+            </label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              autoComplete="email"
+              aria-invalid={Boolean(errors.email)}
+              aria-describedby={errors.email ? "email-error" : undefined}
+              className={field}
+            />
+            {errors.email && (
+              <p id="email-error" className="mt-1.5 text-[15px] text-redpen">
+                {errors.email}
+              </p>
+            )}
           </div>
         </div>
-      </div>
-    </div>
+
+        <div>
+          <label htmlFor="message" className="mb-2 block text-[17px] text-pencil">
+            Message
+          </label>
+          <textarea
+            id="message"
+            name="message"
+            rows={4}
+            aria-invalid={Boolean(errors.message)}
+            aria-describedby={errors.message ? "message-error" : undefined}
+            className={`${field} resize-none`}
+          />
+          {errors.message && (
+            <p id="message-error" className="mt-1.5 text-[15px] text-redpen">
+              {errors.message}
+            </p>
+          )}
+        </div>
+
+        <div className="flex flex-wrap items-center gap-5">
+          <button
+            type="submit"
+            disabled={status === "sending"}
+            className="flex items-center gap-2 rounded-md bg-ballpoint px-8 py-3 font-[Kalam] text-[20px] font-bold text-white transition-colors hover:bg-[#163f99] disabled:opacity-60"
+          >
+            {status === "sending" ? "Sending…" : "Send note"}
+            <Send size={17} aria-hidden="true" />
+          </button>
+
+          <p aria-live="polite" className="text-[17px]">
+            {status === "sent" && (
+              <span className="flex items-center gap-1.5 text-green-700">
+                <Check size={17} aria-hidden="true" />
+                Thanks — I'll get back to you.
+              </span>
+            )}
+            {status === "error" && (
+              <span className="text-redpen">
+                That didn't send. Email me at{" "}
+                <a href={`mailto:${EMAIL}`} className="underline">
+                  {EMAIL}
+                </a>
+                .
+              </span>
+            )}
+          </p>
+        </div>
+      </form>
+      </Reveal>
+    </section>
   );
 };
 

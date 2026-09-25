@@ -1,48 +1,69 @@
-import { motion } from "motion/react";
+import { ArrowDown, Mail } from "lucide-react";
+import { ArrowScribble } from "./Doodles";
+import Reveal from "./Reveal";
 
-const Hero = () => {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.3, delay: 0.1 }}
-      viewport={{ once: true }}
-      className="mt-[10vh] md:mt-[25vh] ml-4 min-h-[15vh] md:min-h-[65vh] "
+const Hero = () => (
+  <section id="top" className="relative pt-10 pb-16 md:pt-16 md:pb-24">
+    <Reveal onMount as="p" className="text-[20px] text-pencil md:text-[24px]">
+      Hello, I'm
+    </Reveal>
+
+    <Reveal
+      onMount
+      delay={0.06}
+      as="h1"
+      className="mt-1 font-[Kalam] text-[40px] leading-[1.15] font-bold md:text-[72px]"
     >
-      <div className="text-[30px] md:text-[63px] font-semibold font-[Kalam] md:flex gap-3 md:gap-5  ">
-        Hello, I'm
-        <span
-          className="-rotate-2 md:bottom-2 relative  "
-          style={{
-            background:
-              "linear-gradient(120deg, rgba(255, 255, 0, 0.4) 0%, rgba(255, 255, 0, 0.4) 100%)",
-            backgroundRepeat: "no-repeat",
-            backgroundSize: "100% 40%",
-            backgroundPosition: "0 80%",
-            padding: "0 10px",
-          }}
-        >
-          Ayomide.
-        </span>
-      </div>
-      <div>
-        <h2 className="font-medium text-[35px] text-[#555] relative  rotate-1 ">
-          {/* I turn ideas into real, working project */}I build things people
-          imagine.
-        </h2>
-        <p className="text-[25px] w-[80%] mt-9 ">
-          I build clean, functional web experiences. I like solving problems and
-          turning ideas into real products.
-        </p>
-      </div>
+      <span className="highlighter -rotate-1 inline-block">Ayomide Ogunyemi</span>
+    </Reveal>
 
-      <button className="px-11 py-3 text-white bg-[#1B66C0] rounded-md -rotate-2 mt-9 text-[23px] font-semibold hover:bg-[#19559d] cursor-pointer hover:rotate-0 transition-all ease-in-out duration-500 ">
-        <a href="mailto:ogunyemiayomide700@gmail.com" className="no-underline">
-          Hire me
-        </a>
-      </button>
-    </motion.div>
-  );
-};
+    <Reveal
+      onMount
+      delay={0.12}
+      as="p"
+      className="mt-3 rotate-[0.6deg] font-[Kalam] text-[24px] text-pencil md:text-[36px]"
+    >
+      I build things people imagine.
+    </Reveal>
+
+    <Reveal
+      onMount
+      delay={0.18}
+      as="p"
+      className="mt-6 max-w-[34ch] text-[19px] leading-[2rem] md:max-w-[46ch] md:text-[23px]"
+    >
+      Software engineer working in React, TypeScript and Node. I like real-time
+      systems, awkward edge cases, and shipping things that actually work.
+    </Reveal>
+
+    <Reveal
+      onMount
+      delay={0.24}
+      className="no-print mt-8 flex flex-wrap items-center gap-x-5 gap-y-4"
+    >
+      <a
+        href="#contact"
+        className="-rotate-2 rounded-md bg-ballpoint px-8 py-3 font-[Kalam] text-[20px] font-bold text-white shadow-md transition-all duration-300 hover:rotate-0 hover:bg-[#163f99]"
+      >
+        Hire me
+      </a>
+      <a
+        href="#projects"
+        className="flex items-center gap-2 rounded-md border-2 border-ink/45 px-6 py-3 font-[Kalam] text-[20px] font-bold transition-colors hover:bg-ink/5"
+      >
+        See my work <ArrowDown size={18} aria-hidden="true" />
+      </a>
+      <a
+        href="mailto:ogunyemiayomide700@gmail.com"
+        className="flex items-center gap-2 text-[18px] text-ballpoint underline decoration-dotted underline-offset-4"
+      >
+        <Mail size={17} aria-hidden="true" />
+        ogunyemiayomide700@gmail.com
+      </a>
+    </Reveal>
+
+    <ArrowScribble className="pointer-events-none absolute right-[5%] bottom-[10%] hidden w-24 -scale-x-100 text-redpen/50 lg:block" />
+  </section>
+);
 
 export default Hero;

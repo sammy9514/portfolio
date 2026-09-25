@@ -1,57 +1,57 @@
-import { useEffect, useState } from "react";
-import { motion } from "motion/react";
+import { Squiggle } from "./Doodles";
+import Reveal from "./Reveal";
+
+const BIRTH_YEAR = 2006;
+const START_YEAR = 2022;
+
+const yearsSince = (from: number) => new Date().getFullYear() - from;
 
 const About = () => {
-  const [age, setAge] = useState(0);
-  const [exp, setExp] = useState(0);
-  useEffect(() => {
-    const date = new Date();
-    const birthYear = 2006;
-    const getYear = date.getFullYear() - birthYear;
-    setAge(getYear);
+  const age = yearsSince(BIRTH_YEAR);
+  const years = yearsSince(START_YEAR);
 
-    const startYear = 2022;
-    const getExp = date.getFullYear() - startYear;
-    setExp(getExp);
-  }, []);
   return (
-    <motion.div
-      initial={{ opacity: 0, y: -30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.3, delay: 0.1 }}
-      viewport={{ once: true }}
-      className="ml-4 min-h-[10vh] md:min-h-[50vh]"
-      id="about"
-    >
-      <h2 className="text-center font-[Kalam] font-semibold mt-10 text-[30px] md:text-[50px]  ">
-        About me{" "}
+    <Reveal as="section" className="scroll-mt-24 py-14 md:py-20">
+      <span id="about" className="block -mt-24 pt-24" aria-hidden="true" />
+      <h2 className="font-[Kalam] text-[30px] font-bold md:text-[46px]">
+        <span className="pen-underline">About me</span>
       </h2>
-      {/* <p>
-        I love transfroming ideas into real working, scalable projects. I'm
-        Ayomide Ogunyemi a {age} year old software engineer with over {exp}+
-        experience in software development, web development, mobile develpment,
-        UI/UX and Project Management. I specialise in building scalable
-        platforms using cutting edge tecnologies and solutions.
-      </p> */}
 
-      <p className="text-xl sm:text-[25px] leading-relaxed">
-        I love transforming ideas into real, working, scalable projects. I'm{" "}
-        <span className="font-bold bg-yellow-200 px-2 rounded">
-          Ayomide Ogunyemi
-        </span>
-        , a {age}-year-old software engineer with {exp}+ years of experience in
-        software development, web development, mobile development, UI/UX, and
-        Project Management.
-      </p>
+      <div className="mt-8 grid gap-8 md:grid-cols-[1.6fr_1fr] md:items-start">
+        <div className="space-y-5 text-[19px] leading-[2rem] md:text-[23px]">
+          <p>
+            I'm a {age}-year-old software engineer. I've been writing code since{" "}
+            {START_YEAR} — {years} years of turning ideas into things you can
+            actually open in a browser and use.
+          </p>
+          <p>
+            Most of what I build leans real-time: chat that doesn't lag, a
+            drawing canvas shared between strangers, a payroll dashboard that
+            stays correct when the pay cycle is weird. I care about the state
+            being right more than the animation being smooth, though I'd like
+            both.
+          </p>
+          <p>
+            Right now I'm going deeper on{" "}
+            <span className="highlighter-pink highlighter">cloud architecture</span>{" "}
+            and AI integration, and building side projects that are slightly
+            beyond what I know how to do yet.
+          </p>
+        </div>
 
-      <p className="text-xl sm:text-[25px] leading-relaxed mt-4">
-        I specialize in building scalable platforms using cutting-edge
-        technologies and solutions.Currently diving deep into cloud architecture
-        and AI integration while working on side projects that push my limits.
-        I'm always learning, always building, and always looking for the next
-        challenge.
-      </p>
-    </motion.div>
+        <aside className="sticky-note relative -rotate-2 p-6 md:mt-4">
+          <span className="tape -top-3 left-1/2 -translate-x-1/2 -rotate-2" />
+          <h3 className="font-[Kalam] text-[22px] font-bold">Quick facts</h3>
+          <ul className="mt-3 space-y-2 text-[18px]">
+            <li>Based in Nigeria, open to remote</li>
+            <li>{years}+ years building for the web</li>
+            <li>4 shipped side projects</li>
+            <li>Happiest in TypeScript</li>
+          </ul>
+          <Squiggle className="mt-4 h-2 w-full text-ink/35" />
+        </aside>
+      </div>
+    </Reveal>
   );
 };
 
